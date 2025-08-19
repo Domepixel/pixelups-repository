@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>PixelUps IA Médica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav.navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        .navbar-nav .nav-link {
+            color: #0d6efd;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #0a58ca;
+        }
+
+        .alert {
+            margin-top: 1rem;
+        }
+
+        /* Contenedor principal para que el footer quede abajo */
+        main.container {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            background-color: #e9ecef;
+            padding: 1.5rem 0;
+            flex-shrink: 0;
+        }
+
+        /* Sección Qué hace */
+        .seccion-que-hace {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(13, 110, 253, 0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #212529;
+        }
+
+        .seccion-que-hace h2 {
+            color: #0d6efd;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .seccion-que-hace p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url_for('index') }}">
+      <i class="bi bi-activity"></i> PixelUps IA Médica
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('modelos') }}">Modelos</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('historial') }}">Historial</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        {% if user %}
+          <li class="nav-item">
+            <span class="nav-link">👤 {{ user }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a>
+          </li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Iniciar sesión</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Registrarse</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+          <div>{{ message }}</div>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+
+
+<footer>
+  <div class="container text-center">
+    <p class="mb-1">&copy; {{ now.year }} PixelUps | Plataforma IA Médica</p>
+    <p class="mb-1">Proyecto desarrollado por estudiantes de Ingeniería Biomédica</p>
+    <p class="mb-1">Universidad Politécnica Salesiana</p>
+    <p class="mb-1">Tutor del proyecto: Ing. Roberto Bayas</p>
+    <p class="mb-0">Estudiantes Investigadoras: Doménica Navarrete, Daniela Alarcón</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+

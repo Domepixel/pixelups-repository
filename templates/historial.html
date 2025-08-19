@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Historial de informes</h2>
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Fecha</th>
+            <th>Diagnóstico</th>
+            <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in historial %}
+        <tr>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.edad }}</td>
+            <td>{{ item.fecha }}</td>
+            <td>{{ item.diagnostico }}</td>
+            <td style="width:120px;">
+                {% if item.imagen_url %}
+                    <img src="{{ item.imagen_url }}" alt="Imagen" style="max-height:80px; max-width:120px; object-fit:cover; border-radius:6px;">
+                {% else %}
+                    Sin imagen
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

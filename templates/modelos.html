@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Modelos Disponibles</h2>
+    <div class="row">
+        <!-- Modelo 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" onclick="window.location.href='{{ url_for('modelo_detalle', nombre='quemaduras_resnet50') }}'" style="cursor: pointer;">
+                <img src="{{ url_for('static', filename='images/quemaduras_resnet50.jpg') }}" class="card-img-top" alt="Modelo Quemaduras">
+                <div class="card-body">
+                    <h5 class="card-title">Detección de Quemaduras (ResNet50)</h5>
+                    <p class="card-text">Modelo entrenado para clasificar el tipo y gravedad de quemaduras a partir de imágenes.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modelo 3: Alzheimer -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" onclick="window.location.href='{{ url_for('modelo_detalle', nombre='alzhaimer') }}'" style="cursor: pointer;">
+                <img src="{{ url_for('static', filename='images/alzhaimer.jpg') }}" class="card-img-top" alt="Modelo Alzheimer">
+                <div class="card-body">
+                    <h5 class="card-title">Detección de Alzheimer</h5>
+                    <p class="card-text">Modelo para la detección temprana de Alzheimer basado en imágenes médicas y datos clínicos.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modelo 4: Cáncer de mama -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" onclick="window.location.href='{{ url_for('modelo_detalle', nombre='cancer_mama') }}'" style="cursor: pointer;">
+                <img src="{{ url_for('static', filename='images/cancer_mama.jpg') }}" class="card-img-top" alt="Modelo Cáncer de Mama">
+                <div class="card-body">
+                    <h5 class="card-title">Detección de Cáncer de Mama</h5>
+                    <p class="card-text">Modelo para la identificación temprana del cáncer de mama a través de imágenes mamográficas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

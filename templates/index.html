@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center text-md-start">
+      <h1 class="display-4 fw-bold">Bienvenido a PixelUps</h1>
+      <p class="lead">Una plataforma educativa para diagnóstico asistido por inteligencia artificial. Analiza imágenes médicas con modelos IA entrenados y contribuye con tus propios proyectos.</p>
+      <a href="{{ url_for('modelos') }}" class="btn btn-primary btn-lg mt-3">Explorar Modelos</a>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="{{ url_for('static', filename='img/logo-pequeno.png') }}" class="img-fluid" alt="Logo PixelUps">
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <section id="sobre-nosotros" class="seccion-que-hace text-center mx-auto" style="max-width: 900px;">
+    <h2 class="fw-semibold text-primary mb-3">¿Qué hace esta plataforma?</h2>
+    <p class="fs-5 lh-lg text-secondary">
+      PixelUps es una plataforma educativa y colaborativa donde estudiantes, docentes e investigadores pueden subir, compartir y probar modelos de IA biomédica. Buscamos acercar la inteligencia artificial al aula y a la clínica, promoviendo el aprendizaje práctico y ético.
+    </p>
+  </section>
+</div>
+{% endblock %}
+
