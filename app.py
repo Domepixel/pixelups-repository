@@ -299,5 +299,11 @@ def logout():
     flash("Has cerrado sesión correctamente.")
     return redirect(url_for("index"))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+#if __name__ == "__main__":
+    #app.run(debug=True)
+
+    if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    # host 0.0.0.0 para que Render pueda ver tu servidor
+    app.run(host="0.0.0.0", port=port)
